@@ -30,9 +30,9 @@ use.weights = T
 #Testing one sample at the time
 data = simSamples(n = n, mu = mu, sigma = sdev, dist = distr, par.location = par.location, par.scale = par.scale, par.shape = par.shape)
 hist(data[,1])
-RAQUE(data = data, p = p, upper.tail = upper.tail, tail.percentage = tail.percentage, plot.empirical = TRUE, use.weights = use.weights)
+RAQE(data = data, p = p, upper.tail = upper.tail, tail.percentage = tail.percentage, plot.empirical = TRUE, use.weights = use.weights)
 
 
 # Test the preformance of one scenario at the time
-scenario = RAQUEperformance(p, upper.tail, tail.percentage, n, mu, sdev, distr, par.location = par.location, par.scale = par.scale, par.shape = par.shape, replicates, use.weights)
+scenario = RAQEperformance(p, upper.tail, tail.percentage, n, mu, sdev, distr, par.location = par.location, par.scale = par.scale, par.shape = par.shape, replicates, use.weights)
 scenario
