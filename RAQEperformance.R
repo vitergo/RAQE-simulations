@@ -1,6 +1,6 @@
 # Function that evaluates the performance of RAQE
 
-RAQUEperformance <- function(p, upper.tail, tail.percentage, n, mu, sdev, distr, replicates, par.location = 0, par.scale = 1, par.shape = 1, use.weights){
+RAQEperformance <- function(p, upper.tail, tail.percentage, n, mu, sdev, distr, replicates, par.location = 0, par.scale = 1, par.shape = 1, use.weights){
   q = rep(NA,replicates)
   fitted.function = rep(NA,replicates)
   for (i in 1:replicates) {
