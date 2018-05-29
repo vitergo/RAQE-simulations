@@ -1,14 +1,14 @@
 #Save all files in a single working directory.
 #Then, set the working directory as the directory where you saved the files.
-setwd("/home/victor/Documents/R Works/RAQUE") #directory where functions are located
+setwd("/home/victor/Documents/R Works/RAQE") #directory where functions are located
 
 #Run all functions from the files within the wd.
-source("GetDist_20180417.R")
-source("GetQuantile_20180417.R")
-source("ksamplesimulator_20180417.R")
-source("functionstofit_20180403.R")
-source("RAQUE_20180403.R")
-source("RAQUEperformance_20180423.R")
+source("GetDist.R")
+source("GetQuantile.R")
+source("ksamplesimulator.R")
+source("functionstofit.R")
+source("RAQE.R")
+source("RAQEperformance.R")
 
 #-------------------------------------------------------------------
 #Simulations starts here
