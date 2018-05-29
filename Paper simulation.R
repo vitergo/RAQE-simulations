@@ -2,8 +2,8 @@
 
 #Preliminaries: Set working directory and file names to save results
 setwd("/home/victor/Documents/R Works/RAQE") #path where functions are located. Don't use "\"
-FileNameR = "RAQE_simResults_20180427.R" #Name to save as R object
-FileNameCSV = "RAQE_simResults_20180427.CSV" #Name to save as CSV file
+FileNameR = "RAQE_simResults_20180529.R" #Name to save as R object
+FileNameCSV = "RAQE_simResults_20180529.CSV" #Name to save as CSV file
 
 
 #Run all functions from the files within the wd.
@@ -36,11 +36,11 @@ sdev = list(sdev1 = c(1),
             sdev4 = c(1,1),
             sdev5 = c(1,1),
             sdev6 = c(1,1))
-s.distr = c("Normal", "LogNormal", "Gamma", "Weibull")
+s.distr = c("Normal", "LogNormal", "Gamma", "Weibull")[3]
 par.location = 0
 s.par.scale = c(0.5, 1, 1.5)
 s.par.shape = c(0.5, 1, 3, 10)
-s.tail.percentage = c(10, 20, 30, 40)
+s.tail.percentage = c(10, 20, 30, 40, 50, 60, 70, 80, 90, 100)
 s.use.weights = c(TRUE, FALSE)
 
 #Initialize data frame
@@ -160,7 +160,7 @@ for(distr in s.distr){
               Results$nWeibull[i] = tt
               
               if(i %% 50 == 0){
-                save(Results, file = "RAQUE_Results_temp.R")
+                save(Results, file = "RAQE_Results_temp.R")
               }
               print(paste("Progress = ", round(i / n.scenarios * 100, digits = 2),"%"))
             }
