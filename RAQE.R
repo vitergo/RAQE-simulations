@@ -1,4 +1,4 @@
-#RAQUE function
+#RAQE function
 #This is an early version of RAQE package
 
 RAQUE <- function(data, p, upper.tail = TRUE, tail.percentage = 25, plot.empirical = TRUE, use.weights = FALSE){
