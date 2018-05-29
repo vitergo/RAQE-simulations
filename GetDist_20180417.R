@@ -1,12 +1,12 @@
 #####################################################################################
 #
-#     RANDOM VARIATE GENERATOR (ERROR IN NORMAL BE CAREFUL)
+#     RANDOM VARIATE GENERATOR
 #
 #     Author: Dr. Víctor G. Tercero Gómez
 #     Affiliation: Tecnologico de Monterrey
 #
 #     Date: April 17, 2018
-#     Versión: 2.0
+#     Versión: 2.2
 #
 #     DESCRIPTION
 #
@@ -41,7 +41,12 @@
 
 getDist <- function(n, dist, mu, stdev, par.location = 0, par.scale = 1, par.shape = 1){
   if(dist == "Normal"){
-    x = rnorm(n, mean = par.location, sd = par.scale)
+    a = par.location
+    b = par.scale
+    EX = a
+    VarX = b^2
+    z = (rnorm(n, mean = a, sd = b) - EX)/ VarX^(0.5)
+    x = mu + stdev*z
   }
   if(dist == "Normal2"){
     a = par.location
@@ -79,14 +84,15 @@ getDist <- function(n, dist, mu, stdev, par.location = 0, par.scale = 1, par.sha
     EX = exp(a + b^2/2)
     VarX = exp(2*(a + b^2)) - exp(2*a + b^2)
     xtemp = rlnorm(n, meanlog = a, sdlog = b)
+    #xtemp = exp(a + b*rnorm(n))
     z = (xtemp  - EX) / VarX^(0.5)
     x = mu + stdev*z
   }
   if(dist == "Gamma"){
-    k = par.scale
-    o = par.shape
+    k = par.scale #beta in Casella
+    o = par.shape #alpha in Casella
     EX = k*o
-    VarX = k*o^2
+    VarX = o*k^2
     xtemp = rgamma(n, shape = o, scale = k)
     z = (xtemp  - EX) / VarX^(0.5)
     x = mu + stdev*z
