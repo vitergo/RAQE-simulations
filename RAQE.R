@@ -1,7 +1,7 @@
 #RAQE function
 #This is an early version of RAQE package
 
-RAQUE <- function(data, p, upper.tail = TRUE, tail.percentage = 25, plot.empirical = TRUE, use.weights = FALSE){
+RAQE <- function(data, p, upper.tail = TRUE, tail.percentage = 25, plot.empirical = TRUE, use.weights = FALSE){
   #read sample statistics
   xbar = tapply(data$x, data$sampleID, mean)
   s = tapply(data$x, data$sampleID, sd)
