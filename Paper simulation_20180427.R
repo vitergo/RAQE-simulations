@@ -1,18 +1,18 @@
 #Save all files in a single working directory.
 
 #Preliminaries: Set working directory and file names to save results
-setwd("/home/victor/Documents/R Works/RAQUE") #path where functions are located. Don't use "\"
-FileNameR = "RAQUE_simResults_20180427.R" #Name to save as R object
-FileNameCSV = "RAQUE_simResults_20180427.CSV" #Name to save as CSV file
+setwd("/home/victor/Documents/R Works/RAQE") #path where functions are located. Don't use "\"
+FileNameR = "RAQE_simResults_20180427.R" #Name to save as R object
+FileNameCSV = "RAQE_simResults_20180427.CSV" #Name to save as CSV file
 
 
 #Run all functions from the files within the wd.
-source("GetDist_20180417.R")
-source("GetQuantile_20180417.R")
-source("ksamplesimulator_20180417.R")
-source("functionstofit_20180403.R")
-source("RAQUE_20180403.R")
-source("RAQUEperformance_20180423.R")
+source("GetDist.R")
+source("GetQuantile.R")
+source("ksamplesimulator.R")
+source("functionstofit.R")
+source("RAQE.R")
+source("RAQEperformance.R")
 
 #Scenarios sets
 replicates = 1000
@@ -105,7 +105,7 @@ for(distr in s.distr){
           for(tail.percentage in s.tail.percentage){
             for(use.weights in s.use.weights){
               i = i + 1
-              scenario = RAQUEperformance(p,
+              scenario = RAQEperformance(p,
                                           upper.tail,
                                           tail.percentage,
                                           n = as.numeric(s.n[[k]]),
