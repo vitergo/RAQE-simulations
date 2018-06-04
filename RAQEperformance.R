@@ -5,7 +5,7 @@ RAQEperformance <- function(p, upper.tail, tail.percentage, n, mu, sdev, distr, 
   fitted.function = rep(NA,replicates)
   for (i in 1:replicates) {
     data = simSamples(n = n, mu = mu, sigma = sdev, dist = distr, par.location = par.location, par.scale = par.scale, par.shape = par.shape)
-    results = RAQUE(data = data, p = p, upper.tail = upper.tail, tail.percentage = tail.percentage, plot.empirical = FALSE, use.weights = use.weights)
+    results = RAQE(data = data, p = p, upper.tail = upper.tail, tail.percentage = tail.percentage, plot.empirical = FALSE, use.weights = use.weights)
     q[i] = results$Xq[1]
     fitted.function[i] = results$fitted.function[1]
   }
