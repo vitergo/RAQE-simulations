@@ -2,8 +2,8 @@
 
 #Preliminaries: Set working directory and file names to save results
 setwd("/home/victor/Documents/R Works/RAQE") #path where functions are located. Don't use "\"
-FileNameR = "RAQE_simResults_20180529.R" #Name to save as R object
-FileNameCSV = "RAQE_simResults_20180529.CSV" #Name to save as CSV file
+FileNameR = "RAQE_simResults_20180604.R" #Name to save as R object
+FileNameCSV = "RAQE_simResults_20180604.CSV" #Name to save as CSV file
 
 
 #Run all functions from the files within the wd.
@@ -44,11 +44,22 @@ s.tail.percentage = c(10, 20, 30, 40, 50, 60, 70, 80, 90, 100)
 s.use.weights = c(TRUE, FALSE)
 
 #Initialize data frame
-n.normal.needed = 1 * length(s.par.scale[1]) * length(s.par.shape[1]) * length(s.p) * length(upper.tail) * length(s.n) * length(par.location) * length(replicates) * length(s.tail.percentage) * length(s.use.weights)
-n.lognormal.needed = 1 * length(s.par.scale) * length(s.par.shape[1]) * length(s.p) * length(upper.tail) * length(s.n) * length(par.location) * length(replicates) * length(s.tail.percentage) * length(s.use.weights)
-n.gamma.needed =   1 * length(s.par.scale[1]) * length(s.par.shape) * length(s.p) * length(upper.tail) * length(s.n) * length(par.location) * length(replicates) * length(s.tail.percentage) * length(s.use.weights)
-n.weibull.needed = 1 * length(s.par.scale[1]) * length(s.par.shape) * length(s.p) * length(upper.tail) * length(s.n) * length(par.location) * length(replicates) * length(s.tail.percentage) * length(s.use.weights)
-
+n.normal.needed = 0
+n.lognormal.needed = 0
+n.gamma.needed = 0
+n.weibull.needed = 0
+if(all(s.distr != "Normal") == FALSE){
+  n.normal.needed = 1 * length(s.par.scale[1]) * length(s.par.shape[1]) * length(s.p) * length(upper.tail) * length(s.n) * length(par.location) * length(replicates) * length(s.tail.percentage) * length(s.use.weights)  
+}
+if(all(s.distr != "LogNormal") == FALSE){
+  n.lognormal.needed = 1 * length(s.par.scale) * length(s.par.shape[1]) * length(s.p) * length(upper.tail) * length(s.n) * length(par.location) * length(replicates) * length(s.tail.percentage) * length(s.use.weights) 
+}
+if(all(s.distr != "Gamma") == FALSE){
+  n.gamma.needed =   1 * length(s.par.scale[1]) * length(s.par.shape) * length(s.p) * length(upper.tail) * length(s.n) * length(par.location) * length(replicates) * length(s.tail.percentage) * length(s.use.weights)
+}
+if(all(s.distr != "Weibull") == FALSE){
+  n.weibull.needed = 1 * length(s.par.scale[1]) * length(s.par.shape) * length(s.p) * length(upper.tail) * length(s.n) * length(par.location) * length(replicates) * length(s.tail.percentage) * length(s.use.weights)
+}
 n.scenarios = n.normal.needed + n.lognormal.needed + n.gamma.needed + n.weibull.needed
 
 NAs = rep(NA, n.scenarios)
@@ -172,3 +183,4 @@ for(distr in s.distr){
 }
 save(Results, file = FileNameR)
 write.csv(Results, file = FileNameCSV, row.names = FALSE)
+View(Results)
